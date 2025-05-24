@@ -32,6 +32,14 @@ This allows for:
 
 ---
 
+## ✨ Example
+
+### NN Controlled Voltage Mode Buck (WIP)
+![Overview](./img/NN_BUCK_VM.png)
+
+
+---
+
 ## 🚀 How to Use
 
 ### 1. Define a model in PyTorch
