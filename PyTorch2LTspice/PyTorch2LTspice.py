@@ -123,7 +123,7 @@ def generate_ltspice_subckt(layers_info, subckt_name="NETLISTSUBCKT", input_port
     netlist_lines.append(f".ENDS {subckt_name}")
     return "\n".join(netlist_lines)
 
-def export_model_to_ltspice(model, filename="MODEL_SUBCKT.SP", subckt_name="NETLISTSUBCKT", input_ports=None, output_port="NNOUT1"):
+def export_model_to_ltspice(model, filename="MODEL_SUBCKT.SP", subckt_name="NETLISTSUBCKT", input_ports=None, output_port="NNOUT1", verbose=True):
     """
     Extracts parameters from an nn.Sequential PyTorch model and exports an LTspice subcircuit
     netlist to a file. The file is written in ASCII encoding.
@@ -132,7 +132,8 @@ def export_model_to_ltspice(model, filename="MODEL_SUBCKT.SP", subckt_name="NETL
     netlist = generate_ltspice_subckt(layers_info, subckt_name, input_ports, output_port)
     with open(filename, "w", encoding="ascii") as f:
         f.write(netlist)
-    print(f"Exported model to LTspice subcircuit netlist in '{filename}'.")
+    if verbose:
+        print(f"Exported model to LTspice subcircuit netlist in '{filename}'.")
 
 if __name__ == "__main__":
     # Define a simple test model using nn.Sequential for compatibility.
