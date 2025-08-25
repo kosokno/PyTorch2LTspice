@@ -1,9 +1,10 @@
 # PyTorch2LTspice
 
-**PyTorch2LTspice** enables the integration of neural networks into circuit simulations by converting PyTorch models into LTspice-compatible behavioral subcircuits (`.subckt`).  
-This tool allows deep learning inference—including supervised learning models and reinforcement learning policies—to run directly within LTspice.
+**PyTorch2LTspice** converts PyTorch neural network models into LTspice-compatible subcircuits (`.subckt`).  
+By combining it with [LTspicePowerSim](https://github.com/kosokno/LTspicePowerSim), users can implement AI-based controllers directly in power electronics circuits such as DC-DC converters, inverters, and motor drivers.  
 
-By combining with the [LTspicePowerSim](https://github.com/kosokno/LTspicePowerSim.git) environment, users can evaluate neural network behavior across a wide range of power electronics applications, such as DC-DC converters, inverters, and motor drivers.
+This repository also provides example code where **a neural network controls the PWM of a BUCK regulator, trained with behavior imitation and PPO**.
+
 
 ![Overview](./img/PyTorch2LTspice.png)
 
