@@ -13,16 +13,30 @@ This repository also provides example code where **a neural network controls the
 ## 📌 Features
 
 - Converts PyTorch `nn.Sequential` models to LTspice-compatible `.subckt` format
-- Supports:
-  - `nn.Linear`
-  - `nn.ReLU`
-  - `nn.Sigmoid`
+- Supported layers:
+  - Linear:
+    - `nn.Linear`
+  - Activations:
+    - `nn.ReLU`
+    - `nn.Sigmoid`
+    - `nn.Tanh`
+  - Cells:
+    - `nn.RNNCell`
+    - `nn.GRUCell`
+    - `nn.LSTMCell`
 - Outputs a netlist using behavioral voltage sources (`B` elements)
-- Auto-generates LTspice node names (`NNIN1`, `NNIN2`, ..., `NNOUT1`)
+- Recurrent cells are implemented with `.machine` blocks (LO/LATCH/HI states, CLK pin auto-added)
+- Auto-generates LTspice node names (`NNIN1`, `NNIN2`, ..., `NNOUT1`, ...)
 - Easy integration into LTspice testbenches
+- Several example models are included:
+  - MLP: `Linear → ReLU → Linear → ReLU → Linear → Sigmoid`
+  - GRUCell: `GRUCell → Linear → Tanh`
+  - LSTMCell: `LSTMCell → Linear → Tanh`
+  - RNNCell: `RNNCell → Linear → Tanh`
+  - Hybrid: `Linear → ReLU → (GRUCell/LSTMCell) → Linear → Tanh`
+  - Multi-cell LSTM: stacked `LSTMCell` layers
 
 ---
-
 ## 🧠 Motivation
 
 Neural networks trained in Python (with PyTorch) can now be exported and tested directly in LTspice circuit simulations.  
@@ -33,7 +47,7 @@ This allows for:
 
 ---
 
-## ✨ Example
+## ✨ Training Example
 
 ### NN Controlled Voltage Mode Buck (WIP)
 ![Overview](./img/NN_BUCK_VM.png)
